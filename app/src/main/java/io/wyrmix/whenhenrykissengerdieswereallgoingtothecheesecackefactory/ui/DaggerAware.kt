@@ -10,7 +10,7 @@ import io.wyrmix.whenhenrykissengerdieswereallgoingtothecheesecackefactory.di.Ac
  *
  * @author Renee Vandervelde
  */
-interface DaggerAwareActivity {
+interface DaggerAware {
     /**
      * Boilerplate required by Dagger2 for injecting the current object.
      *

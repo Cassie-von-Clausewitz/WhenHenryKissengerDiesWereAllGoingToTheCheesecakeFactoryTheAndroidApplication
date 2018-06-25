@@ -1,14 +1,12 @@
 package io.wyrmix.whenhenrykissengerdieswereallgoingtothecheesecackefactory
 
 import android.app.Application
+import drivechain.androidservices.AndroidApplicationModule
 import drivechain.lifecycle.AppKernel
 import drivechain.logger.Logger
-import javax.inject.Inject
-import drivechain.androidservices.AndroidApplicationModule
-import drivechain.androidservices.AndroidCompatActivityModule
 import io.wyrmix.whenhenrykissengerdieswereallgoingtothecheesecackefactory.di.ApplicationComponent
 import io.wyrmix.whenhenrykissengerdieswereallgoingtothecheesecackefactory.di.DaggerApplicationComponent
-
+import javax.inject.Inject
 
 
 class WhenHenryKissengerDiesWereAllGoingToTheCheesecakeFactoryTheAndroidApplication: Application() {
@@ -22,7 +20,6 @@ class WhenHenryKissengerDiesWereAllGoingToTheCheesecakeFactoryTheAndroidApplicat
         initAppComponent()
 
         applicationComponent.inject(this)
-
         appKernel.onCreate(this)
     }
 

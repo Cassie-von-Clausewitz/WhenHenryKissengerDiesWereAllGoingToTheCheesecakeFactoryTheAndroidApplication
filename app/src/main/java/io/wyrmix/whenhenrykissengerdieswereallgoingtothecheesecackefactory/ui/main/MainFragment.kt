@@ -1,14 +1,19 @@
 package io.wyrmix.whenhenrykissengerdieswereallgoingtothecheesecackefactory.ui.main
 
-import android.arch.lifecycle.ViewModelProviders
+import android.arch.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import inkapplications.android.layoutinjector.AutoLayout
 import io.wyrmix.whenhenrykissengerdieswereallgoingtothecheesecackefactory.R
+import io.wyrmix.whenhenrykissengerdieswereallgoingtothecheesecackefactory.databinding.MainFragmentBinding
+import io.wyrmix.whenhenrykissengerdieswereallgoingtothecheesecackefactory.di.ActivityComponent
+import io.wyrmix.whenhenrykissengerdieswereallgoingtothecheesecackefactory.ui.base.BaseFragment
+import io.wyrmix.whenhenrykissengerdieswereallgoingtothecheesecackefactory.ui.base.withViewModel
+import javax.inject.Inject
 
-class MainFragment : Fragment() {
+@AutoLayout(R.layout.main_fragment)
+class MainFragment : BaseFragment() {
+
+    @Inject lateinit var factory: ViewModelProvider.Factory
 
     companion object {
         fun newInstance() = MainFragment()
@@ -16,14 +21,23 @@ class MainFragment : Fragment() {
 
     private lateinit var viewModel: MainViewModel
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        return inflater.inflate(R.layout.main_fragment, container, false)
-    }
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        // TODO: Use the ViewModel
+
+        viewModel = withViewModel(factory) {
+//            observe(posts, ::updatePosts)
+//            swipeRefreshLayout.setOnRefreshListener { get(refresh = true) }
+        }
+
+        val binding = MainFragmentBinding.bind(view!!)
+        binding.viewmodel = viewModel
     }
 
+    override fun onStart() {
+        super.onStart()
+
+        viewModel.getRoutes()
+    }
+
+    override fun injectSelf(component: ActivityComponent) = component.inject(this)
 }

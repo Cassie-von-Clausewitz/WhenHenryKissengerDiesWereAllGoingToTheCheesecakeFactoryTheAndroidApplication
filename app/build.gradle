@@ -36,7 +36,7 @@ dependencies {
     def moshiVersion = "1.5.0"
     def okHttpVersion = "3.9.1"
     def supportLibrary = "27.1.1"
-    def driveChainVersion = "1.4-SNAPSHOT"
+    def driveChainVersion = "1.1+"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -97,11 +97,11 @@ dependencies {
     releaseImplementation "com.github.InkApplications.DriveChain:stetho-bridge-noop:$driveChainVersion"
     debugImplementation "com.github.InkApplications.DriveChain:leakcanary-bridge:$driveChainVersion"
     releaseImplementation "com.github.InkApplications.DriveChain:leakcanary-bridge-noop:$driveChainVersion"
-    debugImplementation "com.github.InkApplications.DriveChain:debugdrawer-bridge:$driveChainVersion"
-    releaseImplementation "com.github.InkApplications.DriveChain:debugdrawer-bridge-noop:$driveChainVersion"
-    implementation "com.github.InkApplications.DriveChain:debugdrawer-location-bridge:$driveChainVersion"
-    implementation "com.github.InkApplications.DriveChain:debugdrawer-logs-bridge:$driveChainVersion"
-    implementation "com.github.InkApplications.DriveChain:debugdrawer-okhttp-bridge:$driveChainVersion"
+    //debugImplementation "com.github.InkApplications.DriveChain:debugdrawer-bridge:$driveChainVersion"
+    //releaseImplementation "com.github.InkApplications.DriveChain:debugdrawer-bridge-noop:$driveChainVersion"
+    //implementation "com.github.InkApplications.DriveChain:debugdrawer-location-bridge:$driveChainVersion"
+    //implementation "com.github.InkApplications.DriveChain:debugdrawer-logs-bridge:$driveChainVersion"
+    //implementation "com.github.InkApplications.DriveChain:debugdrawer-okhttp-bridge:$driveChainVersion"
 
     debugImplementation 'io.palaima.debugdrawer:debugdrawer:0.8.0'
     releaseImplementation 'io.palaima.debugdrawer:debugdrawer-no-op:0.8.0'
